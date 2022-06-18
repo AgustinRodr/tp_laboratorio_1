@@ -2,66 +2,128 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int getInt(int * pNumeroIngresado,char * mensaje,char * mensajeError,
-		int maximo, int minimo, int maximoDeReintentos){
+/// @brief
+///
+/// @param puntero_del_numero_que_obtendremos
+/// @param maximo_numero_que_obtendremos
+/// @param minimo_numero_que_obtendremos
+/// @param mensaje_informando_los_limites
+/// @param mensaje_de_Error
+/// @param contadorDeIntentos
+/// @return
+ int tomarUnEntero(int *punteroNumeroIngresado,int maximo,int minimo,char * mensajeLimites,char * mensajeError ,int contadorDeIntentos){
 
-	int auxNumeroIngresado;
-	int retorno;
-	retorno = -1;
-
-	if(pNumeroIngresado != NULL && maximo >= minimo && maximoDeReintentos>= 0){
-		do{
-			printf("%s", mensaje);
-			scanf("%d", &auxNumeroIngresado);
-			maximoDeReintentos--;
-
-			if(auxNumeroIngresado >= minimo && auxNumeroIngresado <= maximo){
-						*pNumeroIngresado = auxNumeroIngresado;
-						retorno = 0;
-						break;
+		int numeroDeSeguridad;
+		int retorno;
+		retorno= -1;
+		if(punteroNumeroIngresado != NULL && maximo >= minimo && minimo <= maximo){
+			do{
+				printf("%s",mensajeLimites);
+				scanf("%d",&numeroDeSeguridad);
+			if(numeroDeSeguridad <= maximo && numeroDeSeguridad >= minimo){
+				retorno = 0;
+				*punteroNumeroIngresado = numeroDeSeguridad;
+				break;
 			}else{
-				printf("%s", mensajeError);
+				contadorDeIntentos = contadorDeIntentos - 1 ;
+				printf("%s",mensajeError);
 			}
 
-		}while(maximoDeReintentos > 0);
-	}
+		}while(contadorDeIntentos > 0);
 
+	}
 	return retorno;
 }
 
-void mostrar(){
+ /// @brief
+ ///
+ /// @param puntero_del_numero_que_obtendremos
+ /// @param maximo_numero_que_obtendremos
+ /// @param minimo_numero_que_obtendremos
+ /// @param mensajeLimites
+ /// @param mensaje_de_Error
+ /// @param contadorDeIntentos
+ /// @return
+int tomarUnFlotante(float *punteroNumeroIngresado, float maximo,float minimo,char * mensajeLimites,char * mensajeError ,int contadorDeIntentos){
 
-	printf("1)Ingresar kilometros:\n");
-	printf("2)Ingresar precio de vuelo Aerolineas:\n");
-	printf("3)Ingresar precio de vuelo Latam\n");
-	printf("4)Calcular todos los costos:\n");
-	printf("5)Informar resultados\n");
-	printf("6)Carga forzada de datos\n");
-	printf("7)Salir\n");
+		float numeroDeSeguridad;
+		int retorno;
+		retorno=1;
+		if(punteroNumeroIngresado != NULL && maximo >= minimo && minimo <= maximo){
+			do{
+				printf("%s",mensajeLimites);
+				scanf("%f",&numeroDeSeguridad);
+			if(numeroDeSeguridad <= maximo && numeroDeSeguridad >= minimo){
+				retorno = 0;
+				*punteroNumeroIngresado = numeroDeSeguridad;
+				break;
+			}else{
+				contadorDeIntentos = contadorDeIntentos - 1 ;
+				printf("%s",mensajeError);
+			}
+
+		}while(contadorDeIntentos > 0);
+
+	}
+	return retorno;
 }
 
-float precioxUnidad(int numero1, int numero2)
-{
-    return numero1*numero2;
-}
+/// @brief
+///
+/// @param puntero_del_numero_que_obtendremos
+/// @param minimo_numero_que_obtendremos
+/// @param mensaje_informando_los_limites
+/// @param mensaje_de_Error
+/// @param contadorDeIntentos
+/// @return
+int tomarUnEnteroSinMaximo(int *punteroNumeroIngresado,int minimo,char * mensajeLimites,char * mensajeError ,int contadorDeIntentos){
 
-float diferencia(int numero1, int numero2)
-{
-    return numero1-numero2;
-}
+		int numeroDeSeguridad;
+		int retorno;
+		retorno=1;
+		if(punteroNumeroIngresado != NULL){
+			do{
+				printf("%s",mensajeLimites);
+				scanf("%d",&numeroDeSeguridad);
+			if(numeroDeSeguridad >= minimo){
+				retorno = 0;
+				*punteroNumeroIngresado = numeroDeSeguridad;
+				break;
+			}else{
+				contadorDeIntentos = contadorDeIntentos - 1;
+				printf("%s",mensajeError);
+			}
 
-float descuento(int numero1, int numero2)
-{
-    return numero1*numero2;
+			}while(contadorDeIntentos > 0);
+		}
+	return retorno;
 }
+/// @brief
+///
+/// @param puntero_del_numero_que_obtendremos
+/// @param minimo_numero_que_obtendremos
+/// @param mensaje_informando_los_limites
+/// @param mensajeError
+/// @param contadorDeIntentos
+/// @return
+int tomarUnFlotanteSinMaximo(float *punteroNumeroIngresado,float minimo,char * mensajeLimites,char * mensajeError ,int contadorDeIntentos){
 
-float interes(int numero1, int numero2)
-{
-    return numero1*numero2;
+		float numeroDeSeguridad;
+		int retorno;
+		retorno= -1;
+		if(punteroNumeroIngresado != NULL){
+			do{
+				printf("%s",mensajeLimites);
+				scanf("%f",&numeroDeSeguridad);
+			if(numeroDeSeguridad >= minimo){
+				retorno = 0;
+				*punteroNumeroIngresado = numeroDeSeguridad;
+				break;
+			}else{
+				contadorDeIntentos = contadorDeIntentos - 1;
+				printf("%s",mensajeError);
+			}
+		}while(contadorDeIntentos > 0);
+	}
+	return retorno;
 }
-
-float enBitcoin(int numero1, int numero2)
-{
-    return numero1/numero2;
-}
-

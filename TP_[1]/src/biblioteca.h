@@ -20,17 +20,11 @@
 ///
 void mostrar();
 
-int getInt(int * pNumeroIngresado,char * mensaje,char * mensajeError,
-		int maximo, int minimo, int maximoDeReintentos);
+int tomarUnEntero(int *punteroNumeroIngresado,int maximo,int minimo,char * mensajeLimites,char * mensajeError ,int contadorDeIntentos);
 
-float precioxUnidad(int numero1, int numero2);
+int tomarUnFlotante(float *punteroNumeroIngresado, float maximo,float minimo,char * mensajeLimites,char * mensajeError ,int contadorDeIntentos);
 
-float diferencia(int numero1, int numero2);
+int tomarUnEnteroSinMaximo(int *punteroNumeroIngresado,int minimo,char * mensajeLimites,char * mensajeError ,int contadorDeIntentos);
 
-float descuento(int numero1, int numero2);
-
-float interes(int numero1, int numero2);
-
-float enBitcoin(int numero1, int numero2);
-
+int tomarUnFlotanteSinMaximo(float *punteroNumeroIngresado,float minimo,char * mensajeLimites,char * mensajeError ,int contadorDeIntentos);
 #endif /* BIBLIOTECA_H_ */
